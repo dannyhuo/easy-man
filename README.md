@@ -1,1 +1,1 @@
-# esay-man
+# easy-man
