@@ -3,6 +3,7 @@
 *.iml
 
 target/
+build/
 
 # Log file
 *.log

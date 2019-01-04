@@ -42,18 +42,19 @@ create index `idx_services_service_name` on `services`(`service_name`);
 -- 服务监控详情
 DROP TABLE IF EXISTS `service_health`;
 CREATE TABLE `service_health` (
-  `service_id` int NOT NULL AUTO_INCREMENT COMMENT 'key',
-  `service_name` varchar(50) COMMENT '节点名称',
+  `service_health_id` int NOT NULL AUTO_INCREMENT COMMENT 'key',
+  `service_id` int COMMENT '服务ID',
+  `service_name` varchar(50) COMMENT '服务名称',
   `node_id` int COMMENT '所属节点ID',
   `status` tinyint COMMENT '当前状态',
   `comment` varchar(200)  COMMENT '备注',
   `create_time` timestamp default now() COMMENT '创建时间',
   `update_time` timestamp default now() COMMENT '修改时间',
   `is_deleted` tinyint default 0 COMMENT '是否删除， 0=未删除，1=已删除',
-   PRIMARY KEY (`service_id`)
+   PRIMARY KEY (`service_health_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;
-create index `idx_services_node_id` on `services`(`node_id`);
-create index `idx_services_service_name` on `services`(`service_name`);
+create index `idx_service_health_node_id` on `services`(`node_id`);
+create index `idx_service_health_service_name` on `services`(`service_name`);
 
 
 -- 服务gc详情
@@ -81,7 +82,7 @@ CREATE TABLE `service_gc_detail` (
   `FGCT` int COMMENT '从应用程序启动到采样时old代(全gc)gc所用时间(s)',
   `GCT` int COMMENT '从应用程序启动到采样时gc用的总时间(s)',
   `create_time` timestamp default now() COMMENT '采样时间',
-   PRIMARY KEY (`service_id`)
+   PRIMARY KEY (`gcinfo_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;
 create index `idx_service_gc_detail_service_id` on `service_gc_detail`(`service_id`);
 create index `idx_service_gc_detail_service_name` on `service_gc_detail`(`service_name`);
