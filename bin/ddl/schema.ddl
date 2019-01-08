@@ -88,3 +88,8 @@ create index `idx_service_gc_detail_service_id` on `service_gc_detail`(`service_
 create index `idx_service_gc_detail_service_name` on `service_gc_detail`(`service_name`);
 create index `idx_service_gc_detail_pid` on `service_gc_detail`(`pid`);
 create index `idx_service_gc_detail_create_time` on `service_gc_detail`(`create_time`);
+
+
+node_memory
+node_cpu
+node_disk
