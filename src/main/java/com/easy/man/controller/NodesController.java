@@ -1,6 +1,7 @@
 package com.easy.man.controller;
 
 
+import com.easy.man.entity.Nodes;
 import com.easy.man.service.INodesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,35 @@ public class NodesController {
     public ModelAndView nodeLists(ModelAndView mav){
         System.out.println(iNodesService.list());
         mav.setViewName("node-manager/node-list");
-        mav.addObject("lists", iNodesService.list());
+        mav.addObject("nodes", iNodesService.list());
+        return mav;
+    }
+
+
+    @RequestMapping("/save")
+    public ModelAndView save(Nodes node){
+        iNodesService.save(node);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("node-manager/node-list");
+        mav.addObject("nodes", iNodesService.list());
+        return mav;
+    }
+
+    @RequestMapping("/update")
+    public ModelAndView update(Nodes node){
+        iNodesService.updateById(node);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("node-manager/node-list");
+        mav.addObject("nodes", iNodesService.list());
+        return mav;
+    }
+
+    @RequestMapping("/delete")
+    public ModelAndView delete(Nodes node){
+        iNodesService.removeById(node.getNodeId());
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("node-manager/node-list");
+        mav.addObject("nodes", iNodesService.list());
         return mav;
     }
 

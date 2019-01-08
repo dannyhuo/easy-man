@@ -14,7 +14,31 @@
     <!-- Topnav -->
     <#include "../template/navigator.ftl" />
     <!-- Header -->
-    <#include "../template/header.ftl" />
+    <#--<#include "../template/header.ftl" />-->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Node Manager</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">Nodes</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Nodes</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-lg-6 col-5 text-right">
+                        <a href="#" class="btn btn-sm btn-neutral" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Nodes</a>
+                        <#assign title="Add new node">
+                        <#include "node-form.ftl" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- The main content -->
     <div class="container-fluid mt--6">
@@ -24,7 +48,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Node Lists</h3>
+                        <h3 class="mb-0">Node List</h3>
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive" data-toggle="list" data-list-values='["nodeId", "nodeName", "hostName", "ip","ipPublic","status","comment","createTime","updateTime"]'>
@@ -40,94 +64,72 @@
                                 <th scope="col" class="sort" data-sort="comment">Comment</th>
                                 <th scope="col" class="sort" data-sort="createTime">Create Time</th>
                                 <th scope="col" class="sort" data-sort="updateTime">Update Time</th>
-                                <th scope="col"></th>
+                                <th scope="col">action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
-                            <tr>
-                                <th scope="row">
-                                    <div class="media align-items-center">
-                                        <a href="#" class="avatar rounded-circle mr-3">
-                                            <img alt="Image placeholder" src="../static/assets/img/theme/bootstrap.jpg">
-                                        </a>
-                                        <div class="media-body">
-                                            <span class="name mb-0 text-sm">Argon Design System</span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <td class="budget">
-                                    $2500 USD
-                                </td>
-                                <td>
-                                    <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        <span class="status">pending</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="avatar-group">
-                                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                            <img alt="Image placeholder" src="../static/assets/img/theme/team-1.jpg">
-                                        </a>
-                                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                            <img alt="Image placeholder" src="../static/assets/img/theme/team-2.jpg">
-                                        </a>
-                                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                            <img alt="Image placeholder" src="../static/assets/img/theme/team-3.jpg">
-                                        </a>
-                                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                            <img alt="Image placeholder" src="../static/assets/img/theme/team-4.jpg">
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="completion mr-2">60%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+
+                            <#list nodes as node>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <span class="name mb-0 text-sm">${node.nodeId}</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        <span class="status">pending</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        <span class="status">pending</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        <span class="status">pending</span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        <span class="status">pending</span>
-                                    </span>
-                                </td>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                    </th>
+                                    <td class="budget">
+                                        <span class="status">${node.nodeName!}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="bg-warning"></i>
+                                            <span class="status">${node.hostName}</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <span class="status">${node.ip!}</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="completion mr-2">${node.ipPublic!}</span>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <span class="status">${node.status!}</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <span class="status">${node.comment!}</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="bg-inverse-warning"></i>
+                                            <span class="status">${node.createTime!}</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <span class="status">${node.updateTime!}</span>
+                                        </span>
+                                    </td>
+                                    <td class="table-actions">
+                                        <a href="#!" class="table-action" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="Edit Node">
+                                            <i class="fas fa-user-edit"></i>
+                                        </a>
+                                        <#assign node=node><#assign title="edit node">
+                                        <#include "node-form.ftl" />
+                                        <a href="/nodes/delete?${node.nodeId!}" class="table-action table-action-delete" data-toggle="tooltip" aria-haspopup="true" aria-expanded="false" data-original-title="Delete node">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </#list>
                             </tbody>
                         </table>
                     </div>
