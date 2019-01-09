@@ -22,7 +22,7 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+                        <a class="nav-link" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
                             <i class="ni ni-tv-2 text-primary"></i>
                             <span class="nav-link-text">Dashboards</span>
                         </a>
@@ -41,14 +41,14 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#navbar-node-manager" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-node-manager">
+                        <a class="nav-link active" href="#navbar-node-manager" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-node-manager">
                             <i class="ni ni-building text-orange"></i>
                             <span class="nav-link-text">Node Manager</span>
                         </a>
                         <div class="collapse" id="navbar-node-manager">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="#!" class="nav-link">Nodes</a>
+                                    <a href="/nodes/list" class="nav-link">Node List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#!" class="nav-link">Terminal</a>

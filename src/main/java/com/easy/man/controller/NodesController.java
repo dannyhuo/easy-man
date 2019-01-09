@@ -35,6 +35,14 @@ public class NodesController {
         return mav;
     }
 
+    @RequestMapping("/terminal")
+    public ModelAndView terminal(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("node-manager/terminal");
+        mav.addObject("lists", iNodesService.list());
+        return mav;
+    }
+
     @RequestMapping(value = "/list")
     public ModelAndView nodeLists(ModelAndView mav){
         System.out.println(iNodesService.list());
