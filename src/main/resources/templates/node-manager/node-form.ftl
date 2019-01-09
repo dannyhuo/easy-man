@@ -7,7 +7,7 @@
     <!-- Card body -->
     <div class="card-body">
         <form action="/nodes/<#if node?exists>update<#else>save</#if>" method="post">
-            <input name="nodeId" type="hidden" value="<#if node?exists>${node.nodeId?string}</#if>">
+            <input name="nodeId" type="hidden" value="<#if node?exists>${node.nodeId?c}</#if>">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">

@@ -11,6 +11,8 @@
 <script src="../static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
 
 <script src="../static/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../static/assets/vendor/list.js/dist/list.min.js"></script>
+
 
 <!--<script src="../static/assets/vendor/select2/dist/js/select2.min.js"></script>-->
 <!--<script src="../static/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>-->

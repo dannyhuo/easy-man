@@ -48,7 +48,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Node List</h3>
+                        <h3 class="mb-0">Node Lists</h3>
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive" data-toggle="list" data-list-values='["nodeId", "nodeName", "hostName", "ip","ipPublic","status","comment","createTime","updateTime"]'>
@@ -58,7 +58,7 @@
                                 <th scope="col" class="sort" data-sort="nodeId">Node ID</th>
                                 <th scope="col" class="sort" data-sort="nodeName">Node Name</th>
                                 <th scope="col" class="sort" data-sort="hostName">Host Name</th>
-                                <th scope="col">IP</th>
+                                <th scope="col" class="sort" data-sort="ip">IP</th>
                                 <th scope="col" class="sort" data-sort="ipPublic">IP Public</th>
                                 <th scope="col" class="sort" data-sort="status">Status</th>
                                 <th scope="col" class="sort" data-sort="comment">Comment</th>
@@ -74,27 +74,29 @@
                                     <th scope="row">
                                         <div class="media align-items-center">
                                             <div class="media-body">
-                                                <span class="name mb-0 text-sm">${node.nodeId}</span>
+                                                <span class="nodeId mb-0 text-sm">${node.nodeId?c}</span>
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="budget">
-                                        <span class="status">${node.nodeName!}</span>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <span class="nodeName">${node.nodeName!}</span>
+                                        </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-dot mr-4">
                                             <i class="bg-warning"></i>
-                                            <span class="status">${node.hostName}</span>
+                                            <span class="hostName">${node.hostName!}</span>
                                         </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-dot mr-4">
-                                            <span class="status">${node.ip!}</span>
+                                            <span class="ip">${node.ip!}</span>
                                         </span>
                                     </td>
                                     <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="completion mr-2">${node.ipPublic!}</span>
+                                        <div class="badge badge-dot mr-4">
+                                            <span class="ipPublic">${node.ipPublic!}</span>
                                         </div>
                                     </td>
                                     <td>
@@ -104,18 +106,18 @@
                                     </td>
                                     <td>
                                         <span class="badge badge-dot mr-4">
-                                            <span class="status">${node.comment!}</span>
+                                            <span class="comment">${node.comment!}</span>
                                         </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-dot mr-4">
                                             <i class="bg-inverse-warning"></i>
-                                            <span class="status">${node.createTime!}</span>
+                                            <span class="createTime">${node.createTime!}</span>
                                         </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-dot mr-4">
-                                            <span class="status">${node.updateTime!}</span>
+                                            <span class="updateTime">${node.updateTime!}</span>
                                         </span>
                                     </td>
                                     <td class="table-actions">
@@ -124,7 +126,7 @@
                                         </a>
                                         <#assign node=node><#assign title="edit node">
                                         <#include "node-form.ftl" />
-                                        <a href="/nodes/delete?${node.nodeId!}" class="table-action table-action-delete" data-toggle="tooltip" aria-haspopup="true" aria-expanded="false" data-original-title="Delete node">
+                                        <a href="/nodes/delete?nodeId=${node.nodeId!?c}" class="table-action table-action-delete" data-toggle="tooltip" data-original-title="Delete node">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>

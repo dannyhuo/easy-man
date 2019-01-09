@@ -6,6 +6,7 @@ import com.easy.man.service.INodesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,6 +25,8 @@ public class NodesController {
     @Autowired
     private INodesService iNodesService;
 
+    private String redirect = "redirect:/nodes/list";
+
     @RequestMapping("/test")
     public ModelAndView test(ModelAndView mav){
         System.out.println(iNodesService.list());
@@ -32,7 +35,7 @@ public class NodesController {
         return mav;
     }
 
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list")
     public ModelAndView nodeLists(ModelAndView mav){
         System.out.println(iNodesService.list());
         mav.setViewName("node-manager/node-list");
@@ -40,32 +43,22 @@ public class NodesController {
         return mav;
     }
 
-
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(Nodes node){
         iNodesService.save(node);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("node-manager/node-list");
-        mav.addObject("nodes", iNodesService.list());
-        return mav;
+        return new ModelAndView(redirect);
     }
 
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView update(Nodes node){
         iNodesService.updateById(node);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("node-manager/node-list");
-        mav.addObject("nodes", iNodesService.list());
-        return mav;
+        return new ModelAndView(redirect);
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete")
     public ModelAndView delete(Nodes node){
         iNodesService.removeById(node.getNodeId());
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("node-manager/node-list");
-        mav.addObject("nodes", iNodesService.list());
-        return mav;
+        return new ModelAndView(redirect);
     }
 
 }
