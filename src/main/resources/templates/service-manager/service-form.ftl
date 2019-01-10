@@ -16,7 +16,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-server"></i></span>
                             </div>
-                            <input name="serviceName" class="form-control" placeholder="<#if service?exists>${service.serviceName!}</#if>" type="text">
+                            <input name="serviceName" class="form-control" value="<#if service?exists>${service.serviceName!}</#if>" type="text">
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                     <span class="input-group">Start CMD</span>
                     <div class="form-group">
                         <div class="input-group input-group-merge">
-                            <input name="startCmd" class="form-control" placeholder="<#if service?exists>${service.startCmd!}</#if>" type="text">
+                            <input name="startCmd" class="form-control" value="<#if service?exists>${service.startCmd!}</#if>" type="text">
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <span class="input-group">Stop CMD</span>
                     <div class="form-group">
                         <div class="input-group input-group-merge">
-                            <input name="stopCmd" class="form-control" placeholder="<#if service?exists>${service.stopCmd!}</#if>" type="text">
+                            <input name="stopCmd" class="form-control" value="<#if service?exists>${service.stopCmd!}</#if>" type="text">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
                             </div>
@@ -45,7 +45,7 @@
                     <span class="input-group">Node ID</span>
                     <div class="form-group">
                         <div class="input-group input-group-merge">
-                            <input name="nodeId" class="form-control" placeholder="<#if service?exists>${service.nodeId!}</#if>" type="text">
+                            <input name="nodeId" class="form-control" value="<#if service?exists>${service.nodeId!}</#if>" type="text">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-eye"></i></span>
                             </div>
@@ -58,7 +58,7 @@
                     <span class="input-group">Status</span>
                     <div class="form-group">
                         <div class="input-group input-group-merge">
-                            <input name="status" class="form-control" placeholder="<#if service?exists>${service.status!}</#if>" type="text">
+                            <input name="status" class="form-control" value="<#if service?exists>${service.status!}</#if>" type="text">
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     <span class="input-group">Comment</span>
                     <div class="form-group">
                         <div class="input-group input-group-merge">
-                            <input name="comment" class="form-control" placeholder="<#if service?exists>${service.comment!}</#if>" type="text">
+                            <input name="comment" class="form-control" value="<#if service?exists>${service.comment!}</#if>" type="text">
                         </div>
                     </div>
                 </div>
