@@ -1,4 +1,4 @@
-package com.easy.man.controller;
+package com.easy.man.controller.servicemanager;
 
 
 import com.easy.man.service.IServiceGcDetailService;

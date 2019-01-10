@@ -1,4 +1,4 @@
-package com.easy.man.controller;
+package com.easy.man.controller.nodemanager;
 
 
 import com.easy.man.entity.Nodes;
@@ -35,13 +35,7 @@ public class NodesController {
         return mav;
     }
 
-    @RequestMapping("/terminal")
-    public ModelAndView terminal(){
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("node-manager/terminal");
-        mav.addObject("lists", iNodesService.list());
-        return mav;
-    }
+
 
     @RequestMapping(value = "/list")
     public ModelAndView nodeLists(ModelAndView mav){
@@ -67,6 +61,11 @@ public class NodesController {
     public ModelAndView delete(Nodes node){
         iNodesService.removeById(node.getNodeId());
         return new ModelAndView(redirect);
+    }
+
+    @RequestMapping(value = "/delete2", method = RequestMethod.DELETE)
+    public void delete2(Nodes node){
+        iNodesService.removeById(node.getNodeId());
     }
 
 }
