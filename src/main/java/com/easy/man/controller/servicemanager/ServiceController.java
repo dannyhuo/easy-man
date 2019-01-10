@@ -42,25 +42,22 @@ public class ServiceController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(Services service){
+        System.out.println("save service ..............");
         iServicesService.save(service);
         return new ModelAndView(redirect);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView update(Services service){
+        System.out.println("update service .............." + service.getServiceId());
         iServicesService.updateById(service);
         return new ModelAndView(redirect);
     }
 
-    @RequestMapping(value = "/delete")
-    public ModelAndView delete(Nodes node){
-        iServicesService.removeById(node.getNodeId());
-        return new ModelAndView(redirect);
-    }
-
-    @RequestMapping(value = "/delete2", method = RequestMethod.DELETE)
-    public void delete2(Nodes node){
-        iServicesService.removeById(node.getNodeId());
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public void delete2(Services service){
+        System.out.println("delete service .............." + service.getServiceId());
+        iServicesService.removeById(service.getServiceId());
     }
 
 }

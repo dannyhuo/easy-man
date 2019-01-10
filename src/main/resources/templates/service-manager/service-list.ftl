@@ -21,12 +21,12 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Service list</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Service Manager</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#">Nodes</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Nodes</li>
+                                <li class="breadcrumb-item"><a href="#">Service Manager</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">List</li>
                             </ol>
                         </nav>
                     </div>
@@ -49,7 +49,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Node Lists</h3>
+                        <h3 class="mb-0">Service Lists</h3>
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive" data-toggle="list" data-list-values='["serviceId", "serviceName", "startCmd", "stopCmd","nodeId","status","comment","createTime","updateTime"]'>
@@ -128,8 +128,8 @@
                                         <#assign service=service>
                                         <#assign title="Edit service">
                                         <#include "service-form.ftl" />
-                                        <a href="/nodes/delete?nodeId=${node.nodeId!?c}" class="table-action table-action-delete" aria-expanded="false"
-                                           data-original-title="Delete node" onclick="deleteNode2(${node.nodeId!?c}, '${node.nodeName}')">
+                                        <a href="#" class="table-action table-action-delete" aria-expanded="false"
+                                           data-original-title="Delete service" onclick="deleteService(${service.serviceId?c}, '${service.serviceName}')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
@@ -144,25 +144,19 @@
             </div>
         </div>
 
-        <div class="card" data-select2-id="7">
-            <!-- Card header -->
-            <div class="card-header">
-                <h3 class="mb-0">Dropdowns</h3>
-            </div>
-            <!-- Card body -->
-            <div class="card-body" data-select2-id="6">
-                <form data-select2-id="5">
-                    <select class="form-control select2-hidden-accessible" data-toggle="select" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                        <option data-select2-id="3">Alerts</option>
-                        <option data-select2-id="10">Badges</option>
-                        <option data-select2-id="11">Buttons</option>
-                        <option data-select2-id="12">Cards</option>
-                        <option data-select2-id="13">Forms</option>
-                        <option data-select2-id="14">Modals</option>
-                    </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-select2-id="2" style="width: 713.5px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-tm9l-container"><span class="select2-selection__rendered" id="select2-tm9l-container" role="textbox" aria-readonly="true" title="Cards">Cards</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                </form>
-            </div>
-        </div>
+        <#--<div class="card" data-select2-id="7">-->
+            <#--<!-- Card header &ndash;&gt;-->
+            <#--<div class="card-header">-->
+                <#--<h3 class="mb-0">Dropdowns</h3>-->
+            <#--</div>-->
+            <#--<!-- Card body &ndash;&gt;-->
+            <#--<div class="card-body" data-select2-id="6">-->
+                <#--<select class="js-example-basic-single" name="state">-->
+                    <#--<option value="AL">Alabama</option>-->
+                    <#--<option value="WY">Wyoming</option>-->
+                <#--</select>-->
+            <#--</div>-->
+        <#--</div>-->
 
 
         <!-- Footer -->
@@ -172,7 +166,7 @@
 </div>
 <#include "../template/scripts.ftl" />
 
-<script type="application/javascript" src="../static/myjs/nodemanager/node-list.js"></script>
+<script type="application/javascript" src="../static/myjs/servicemanager/service-list.js"></script>
 </body>
 
 </html>

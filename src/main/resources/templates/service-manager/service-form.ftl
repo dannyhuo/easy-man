@@ -42,43 +42,23 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <span class="input-group">Node</span>
-                    <div class="card-body" data-select2-id="6">
-                        <form data-select2-id="5">
-                            <select name="nodeId" class="form-control select2-hidden-accessible" data-toggle="select" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                <#list nodes as node>
-                                    <option data-select2-id="${node.nodeId?c}">${node.nodeName}</option>
-                                </#list>
-                            </select>
-                            <#--<span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" data-select2-id="2" style="width: 713.5px;">-->
-                                <#--<span class="selection">-->
-                                    <#--<span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-tm9l-container">-->
-                                        <#--<span class="select2-selection__rendered" id="select2-tm9l-container" role="textbox" aria-readonly="true" title="Alerts">Alerts</span>-->
-                                        <#--<span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>-->
-                                    <#--</span>-->
-                                <#--</span>-->
-                                <#--<span class="dropdown-wrapper" aria-hidden="true"></span>-->
-                            <#--</span>-->
-                        </form>
+                    <span class="input-group">Node ID</span>
+                    <div class="form-group">
+                        <div class="input-group input-group-merge">
+                            <input name="nodeId" class="form-control" placeholder="<#if service?exists>${service.nodeId!}</#if>" type="text">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                            </div>
+                        </div>
                     </div>
-
-
-                    <#--<div class="form-group">-->
-                        <#--<div class="input-group input-group-merge">-->
-                            <#--<input name="nodeId" class="form-control" placeholder="<#if service?exists>${service.nodeId!}</#if>" type="text">-->
-                            <#--<div class="input-group-append">-->
-                                <#--<span class="input-group-text"><i class="fas fa-eye"></i></span>-->
-                            <#--</div>-->
-                        <#--</div>-->
-                    <#--</div>-->
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <span class="input-group">Hosts</span>
+                    <span class="input-group">Status</span>
                     <div class="form-group">
                         <div class="input-group input-group-merge">
-                            <input name="hosts" class="form-control" placeholder="<#if service?exists>${service.hosts!}</#if>" type="text">
+                            <input name="status" class="form-control" placeholder="<#if service?exists>${service.status!}</#if>" type="text">
                         </div>
                     </div>
                 </div>
