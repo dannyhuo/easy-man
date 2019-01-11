@@ -90,6 +90,26 @@ create index `idx_service_gc_detail_pid` on `service_gc_detail`(`pid`);
 create index `idx_service_gc_detail_create_time` on `service_gc_detail`(`create_time`);
 
 
+
+DROP TABLE IF EXISTS `node_memory`;
+CREATE TABLE `node_memory` (
+  `node_memory_id` int NOT NULL AUTO_INCREMENT COMMENT 'key',
+  `node_id` int COMMENT '所属节点ID',
+  `total` int COMMENT '总内存，kb',
+  `used` int COMMENT '已使用内存，kb',
+  `free` int COMMENT '空闲内存，kb',
+  `shared` int COMMENT 'shared内存，kb',
+  `buff_cache` int COMMENT 'cache， buff使用的内存，kb',
+  `available` int COMMENT 'available ，kb',
+  `swap_total` int COMMENT 'swap总内存，kb',
+  `swap_used` int COMMENT 'swap已使用内存，kb',
+  `swap_free` int COMMENT 'swap空闲内存，kb',
+  `create_time` timestamp default now() COMMENT '采样时间',
+   PRIMARY KEY (`node_memory_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8;
+create index `idx_nodes_memory_node_id` on `node_memory`(`node_id`);
+
+
 node_memory
 node_cpu
 node_disk

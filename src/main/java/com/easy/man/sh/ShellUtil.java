@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShellUtil {
 
-    public static String exec(String command){
-        String result = null;
+    public static List<String> exec(String command){
+        List<String> result = null;
         Process proc = null;
         try {
             proc = Runtime.getRuntime().exec(command);
@@ -16,7 +18,7 @@ public class ShellUtil {
             result = getProcessResult(proc, command);
         } catch (IOException e) {
             e.printStackTrace();
-            result = e.getMessage();
+            result.add(e.getMessage());
         } finally {
             if (null != proc) {
                 proc.destroy();
@@ -26,22 +28,22 @@ public class ShellUtil {
     }
 
 
-    public static String getProcessResult (Process proc, String command) {
+    public static List<String> getProcessResult (Process proc, String command) {
         InputStream in = null;
         InputStreamReader read = null;
         BufferedReader reader = null;
-        StringBuffer result = new StringBuffer();
+        List result = new ArrayList();
         try {
             in = proc.getInputStream();
             read = new InputStreamReader(in);
             reader = new BufferedReader(read);
             int status = proc.waitFor();
             if (status != 0) {
-                result.append("Failed to call shell's command : " + command);
+                result.add("Failed to call shell's command : " + command);
             }
             String line;
             while ((line = reader.readLine())!= null) {
-                result.append(line).append("\n");
+                result.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,13 +61,13 @@ public class ShellUtil {
             }
         }
 
-        return result.toString();
+        return result;
     }
 
     private static String remoteShellPath = "/Users/danny/works/idea/easy-man/bin/sh/remote-shell.sh";
     private final static String BLANK = " ";
-    public static String exec(String command, String host, String user){
-        String result = null;
+    public static List<String> exec(String command, String host, String user){
+        List<String> result = null;
         Process proc = null;
         StringBuffer rmtCmd = new StringBuffer("sh ");
         try {
@@ -87,7 +89,7 @@ public class ShellUtil {
             result = getProcessResult(proc, command);
         } catch (IOException e) {
             e.printStackTrace();
-            result = e.getMessage();
+            result.add(e.getMessage());
         } finally {
             if (null != proc) {
                 proc.destroy();
@@ -98,7 +100,45 @@ public class ShellUtil {
     }
 
 
+    /**
+     * 将字符串中的空多空格替换单空格
+     * @param str
+     * @return
+     */
+    public static String pickBlank (String str) {
+        int len = str.length();
+        StringBuffer buffer = new StringBuffer();
+
+        int flag = 1;
+        for (int i = 0; i < len; i++) {
+
+            char cur = str.charAt(i);
+
+            //当遇到第一个空格，拼入字符串
+            if (cur == ' ' && flag < 1) {
+                buffer.append(BLANK);
+                flag ++;
+            }
+
+            //遇到非空格，拼入字符串
+            if (cur != ' ') {
+                buffer.append(cur);
+                flag = 0;
+
+            }
+        }
+
+        return buffer.toString();
+    }
+
+    public static String[] pickArray (String str) {
+        return pickBlank(str).split(BLANK);
+    }
+
     public static void main(String[] args) {
-        System.out.println(exec("ssh zk3 ls","cdp","az-user"));
+
+        //System.out.println(exec("ssh zk3 ls","cdp","az-user"));
+
+        System.out.println(pickBlank(exec("free","cdp","az-user").get(0)));
     }
 }

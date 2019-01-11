@@ -1,0 +1,1 @@
+var currentMenu=null;

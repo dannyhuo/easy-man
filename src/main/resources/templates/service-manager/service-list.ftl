@@ -81,12 +81,12 @@
                                     </th>
                                     <td>
                                         <span class="badge badge-dot mr-4">
+                                            <i class="bg-warning"></i>
                                             <span class="serviceName" data-toggle="tooltip" data-original-title="${service.serviceName!}">${service.serviceName!}</span>
                                         </span>
                                     </td>
                                     <td>
                                         <span class="badge badge-dot mr-4">
-                                            <i class="bg-warning"></i>
                                             <span class="startCmd" data-toggle="tooltip" data-original-title="${service.startCmd!}">${service.startCmd!}</span>
                                         </span>
                                     </td>
@@ -127,6 +127,7 @@
                                         </a>
                                         <#assign service=service>
                                         <#assign title="Edit service">
+                                        <#--<#assign nodes=nodes>-->
                                         <#include "service-form.ftl" />
                                         <a href="#" class="table-action table-action-delete" aria-expanded="false"
                                            data-original-title="Delete service" onclick="deleteService(${service.serviceId?c}, '${service.serviceName}')">
