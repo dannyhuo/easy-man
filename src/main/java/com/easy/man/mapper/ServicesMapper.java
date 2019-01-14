@@ -1,6 +1,6 @@
 package com.easy.man.mapper;
 
-import com.easy.man.entity.Services;
+import com.easy.man.entity.po.Services;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

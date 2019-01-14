@@ -1,6 +1,6 @@
 package com.easy.man.service.impl;
 
-import com.easy.man.entity.ServiceHealth;
+import com.easy.man.entity.po.ServiceHealth;
 import com.easy.man.mapper.ServiceHealthMapper;
 import com.easy.man.service.IServiceHealthService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,8 +1,7 @@
 package com.easy.man.controller.servicemanager;
 
 
-import com.easy.man.entity.Nodes;
-import com.easy.man.entity.Services;
+import com.easy.man.entity.po.Services;
 import com.easy.man.service.INodesService;
 import com.easy.man.service.IServicesService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.easy.man.mapper;
 
-import com.easy.man.entity.Nodes;
+import com.easy.man.entity.po.Nodes;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

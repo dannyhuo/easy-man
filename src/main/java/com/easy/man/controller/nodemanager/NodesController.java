@@ -1,7 +1,7 @@
 package com.easy.man.controller.nodemanager;
 
 
-import com.easy.man.entity.Nodes;
+import com.easy.man.entity.po.Nodes;
 import com.easy.man.service.INodesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

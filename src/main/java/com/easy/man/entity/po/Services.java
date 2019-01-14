@@ -1,4 +1,4 @@
-package com.easy.man.entity;
+package com.easy.man.entity.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -19,25 +19,30 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class ServiceHealth implements Serializable {
+public class Services implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * key
      */
-    @TableId(value = "service_health_id", type = IdType.AUTO)
-    private Integer serviceHealthId;
-
-    /**
-     * 服务ID
-     */
+    @TableId(value = "service_id", type = IdType.AUTO)
     private Integer serviceId;
 
     /**
      * 服务名称
      */
     private String serviceName;
+
+    /**
+     * 启动命令
+     */
+    private String startCmd;
+
+    /**
+     * 停止命名
+     */
+    private String stopCmd;
 
     /**
      * 所属节点ID

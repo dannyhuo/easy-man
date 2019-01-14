@@ -1,6 +1,6 @@
 package com.easy.man.service.impl;
 
-import com.easy.man.entity.ServiceGcDetail;
+import com.easy.man.entity.po.ServiceGcDetail;
 import com.easy.man.mapper.ServiceGcDetailMapper;
 import com.easy.man.service.IServiceGcDetailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

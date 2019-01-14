@@ -1,7 +1,10 @@
 package com.easy.man.schedule;
 
 import com.easy.man.entity.bo.NodeMemoryBO;
+import com.easy.man.entity.po.ServiceGcDetail;
+import com.easy.man.entity.po.Services;
 import com.easy.man.service.INodeMemoryService;
+import com.easy.man.service.IServiceGcDetailService;
 import com.easy.man.sh.ShellUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,29 +18,24 @@ import java.util.List;
  *
  * @since 2018-01-11
  */
-@Component(value = "memorySchedule")
-public class MemorySchedule {
+@Component(value = "serviceGcSchedule")
+public class ServiceGcSchedule {
 
     private static int memSize = 3;
 
     @Autowired
-    private INodeMemoryService iNodeMemoryService;
+    private IServiceGcDetailService iServiceGcDetailService;
 
 
     @Scheduled(cron = "0 */1 * * * *")
-    public void memorySampling () {
+    public void serviceGcSampling () {
 
-        List<String> rs = ShellUtil.exec("free", "cdp", "az-user");
+        List<String> rs = ShellUtil.exec("jstat -gc ", "cdp", "az-user");
 
-        NodeMemoryBO nodeMemory = new NodeMemoryBO();
 
-        nodeMemory.setNodeId(10000);
+    }
 
-        nodeMemory.addMem(ShellUtil.pickArray(rs.get(1)));
-
-        nodeMemory.addSwapMem(ShellUtil.pickArray(rs.get(2)));
-
-        iNodeMemoryService.save(nodeMemory);
+    private void samplingGc (Services service) {
 
     }
 

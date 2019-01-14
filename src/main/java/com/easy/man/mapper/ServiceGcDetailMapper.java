@@ -1,6 +1,6 @@
 package com.easy.man.mapper;
 
-import com.easy.man.entity.ServiceGcDetail;
+import com.easy.man.entity.po.ServiceGcDetail;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
