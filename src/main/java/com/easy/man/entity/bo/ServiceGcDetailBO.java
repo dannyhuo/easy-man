@@ -3,8 +3,16 @@ package com.easy.man.entity.bo;
 import com.easy.man.constant.ENUM;
 import com.easy.man.entity.po.ServiceGcDetail;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
+/**
+ *
+ * @author danny
+ *
+ * @since 2019-01-17
+ *
+ */
 public class ServiceGcDetailBO extends ServiceGcDetail {
 
 
@@ -13,24 +21,26 @@ public class ServiceGcDetailBO extends ServiceGcDetail {
      * @param gcDetailMap
      */
     public void initGc (Map<String, String> gcDetailMap) {
-        this.setS0c(Integer.parseInt(gcDetailMap.get(ENUM.GC.S0C)));
-        this.setS0u(Integer.parseInt(gcDetailMap.get(ENUM.GC.S0U)));
-        this.setS1c(Integer.parseInt(gcDetailMap.get(ENUM.GC.S1C)));
-        this.setS1u(Integer.parseInt(gcDetailMap.get(ENUM.GC.S1U)));
-        this.setEc(Integer.parseInt(gcDetailMap.get(ENUM.GC.EC)));
-        this.setEu(Integer.parseInt(gcDetailMap.get(ENUM.GC.EU)));
-        this.setOc(Integer.parseInt(gcDetailMap.get(ENUM.GC.OC)));
-        this.setOu(Integer.parseInt(gcDetailMap.get(ENUM.GC.OU)));
-        this.setMc(Integer.parseInt(gcDetailMap.get(ENUM.GC.MC)));
-        this.setMu(Integer.parseInt(gcDetailMap.get(ENUM.GC.MU)));
-        this.setCcsc(Integer.parseInt(gcDetailMap.get(ENUM.GC.CCSC)));
-        this.setCcsu(Integer.parseInt(gcDetailMap.get(ENUM.GC.CCSU)));
-        this.setYgc(Integer.parseInt(gcDetailMap.get(ENUM.GC.YGC)));
-        this.setYgct(Integer.parseInt(gcDetailMap.get(ENUM.GC.YGCT)));
-        this.setFgc(Integer.parseInt(gcDetailMap.get(ENUM.GC.FGC)));
-        this.setFgct(Integer.parseInt(gcDetailMap.get(ENUM.GC.FGCT)));
-        this.setGct(Integer.parseInt(gcDetailMap.get(ENUM.GC.GCT)));
+
+        this.setS0c(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.S0C.name()))));
+        this.setS0u(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.S0U.name()))));
+        this.setS1c(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.S1C.name()))));
+        this.setS1u(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.S1U.name()))));
+        this.setEc(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.EC.name()))));
+        this.setEu(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.EU.name()))));
+        this.setOc(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.OC.name()))));
+        this.setOu(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.OU.name()))));
+        this.setMc(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.MC.name()))));
+        this.setMu(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.MU.name()))));
+        this.setCcsc(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.CCSC.name()))));
+        this.setCcsu(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.CCSU.name()))));
+        this.setYgc(Integer.parseInt(gcDetailMap.get(ENUM.GC.YGC.name())));
+        this.setYgct(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.YGCT.name()))));
+        this.setFgc(Integer.parseInt(gcDetailMap.get(ENUM.GC.FGC.name())));
+        this.setFgct(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.FGCT.name()))));
+        this.setGct(BigDecimal.valueOf(Float.parseFloat(gcDetailMap.get(ENUM.GC.GCT.name()))));
     }
+
 
 
 

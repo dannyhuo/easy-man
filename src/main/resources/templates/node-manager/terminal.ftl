@@ -132,6 +132,56 @@
             </div>
         </div>
 
+
+
+
+
+
+        <div class="row">
+            <div class="col-xl-6">
+                <!--* Card header *-->
+                <!--* Card body *-->
+                <!--* Card init *-->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <!-- Surtitle -->
+                        <h6 class="surtitle">Overview</h6>
+                        <!-- Title -->
+                        <h5 class="h3 mb-0">Total sales</h5>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                            <!-- Chart wrapper -->
+                            <canvas id="chart-sales" class="chart-canvas chartjs-render-monitor" width="1722" height="700" style="display: block; height: 350px; width: 861px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <!--* Card header *-->
+                <!--* Card body *-->
+                <!--* Card init *-->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <!-- Surtitle -->
+                        <h6 class="surtitle">Performance</h6>
+                        <!-- Title -->
+                        <h5 class="h3 mb-0">Total orders</h5>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="chart"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                            <!-- Chart wrapper -->
+                            <canvas id="chart-bars" class="chart-canvas chartjs-render-monitor" width="1722" height="700" style="display: block; height: 350px; width: 861px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer -->
         <#include "../template/footer.ftl" />
 

@@ -55,6 +55,30 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
+                    <span class="input-group">User Name</span>
+                    <div class="form-group">
+                        <div class="input-group input-group-merge">
+                            <input name="userName" class="form-control" value="<#if node?exists>${node.userName!}</#if>" type="text">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <span class="input-group">Password</span>
+                    <div class="form-group">
+                        <div class="input-group input-group-merge">
+                            <input name="password" class="form-control" value="" type="password">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     <span class="input-group">Hosts</span>
                     <div class="form-group">
                         <div class="input-group input-group-merge">

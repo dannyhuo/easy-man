@@ -2,4 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.easy.man.mapper.ServicesMapper">
 
+    <resultMap id="nodeMap" type="com.easy.man.entity.po.Nodes">
+        <id property="nodeId" column="node_id" />
+        <result property="nodeName" column="node_name" />
+        <result property="hostName" column="host_name" />
+        <result property="ip" column="ip" />
+        <result property="ipPublic" column="ip_public" />
+    </resultMap>
+
+    <resultMap id="nodeServiceVo" type="com.easy.man.entity.vo.ServiceVO">
+        <id property="serviceId" column="service_id" />
+        <result property="serviceName" column="service_name" />
+        <result property="createTime" column="create_time" />
+        <result property="updateTime" column="update_time" />
+        <association property="node" resultMap="nodeMap" />
+    </resultMap>
+
+    <select id="listServiceByPage" resultMap="nodeServiceVo" parameterType="java.util.HashMap">
+        select
+          s.service_id,
+          s.service_name,
+          n.node_id,
+          n.node_name,
+          n.host_name,
+          n.ip,
+          n.ip_public,
+          s.create_time,
+          s.update_time
+        from
+          services s
+        left join
+          nodes n
+        on
+          s.node_id = n.node_id
+        <if test="startRow != null">
+            limit ${startRow}, ${pageSize}
+        </if>
+    </select>
+
 </mapper>
