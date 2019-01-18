@@ -3,12 +3,14 @@ package com.easy.man.entity.vo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.easy.man.entity.po.Nodes;
+import com.easy.man.entity.po.ServiceGcDetail;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * node 和 service 表关联查询实体
@@ -51,5 +53,10 @@ public class ServiceVO implements Serializable {
      * 修改时间
      */
     private LocalDateTime updateTime;
+
+    /**
+     * gc相当信息
+     */
+    private List<ServiceGcDetail> gcDetails;
 
 }

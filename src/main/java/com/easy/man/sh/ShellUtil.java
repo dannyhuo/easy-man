@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ShellUtil {
 
+
     public static List<String> exec(String command){
         List<String> result = null;
         Process proc = null;
@@ -64,12 +65,12 @@ public class ShellUtil {
         return result;
     }
 
-    private static String remoteShellPath = "/Users/danny/works/idea/easy-man/bin/sh/remote-shell.sh";
+    private static String remoteShellPath = "classpath:os/remote-shell.sh";
     private final static String BLANK = " ";
     public static List<String> exec(String command, String host, String user){
         List<String> result = null;
         Process proc = null;
-        StringBuffer rmtCmd = new StringBuffer("sh ");
+        StringBuffer rmtCmd = new StringBuffer();
         try {
             rmtCmd.append(remoteShellPath);
             rmtCmd.append(BLANK);

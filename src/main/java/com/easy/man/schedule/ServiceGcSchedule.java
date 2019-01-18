@@ -28,7 +28,7 @@ public class ServiceGcSchedule {
 
     private static int memSize = 3;
 
-    private static String JSTAT = "sh /Users/danny/works/idea/easy-man/bin/jvm/jstat-gc.sh";
+    private static String JSTAT = "classpath:jvm/jstat-gc.sh";
     private static String BLANK = " ";
 
     @Autowired
@@ -52,13 +52,14 @@ public class ServiceGcSchedule {
             StringBuffer cmdBuffer = new StringBuffer();
             cmdBuffer.append(JSTAT);
             cmdBuffer.append(BLANK);
-            cmdBuffer.append(service.getNode().getHosts());
+            cmdBuffer.append(service.getNode().getHostName());
             cmdBuffer.append(BLANK);
             cmdBuffer.append(service.getNode().getUserName());
             cmdBuffer.append(BLANK);
             cmdBuffer.append(service.getServiceName());
             cmdBuffer.append(BLANK);
             List<String> rs = ShellUtil.exec(cmdBuffer.toString());
+            System.out.println(cmdBuffer);
             if (null != rs && rs.size() == 2) {
                 String[] t1 = ShellUtil.pickArray(rs.get(0));
                 String[] t2 = ShellUtil.pickArray(rs.get(1));
@@ -68,12 +69,18 @@ public class ServiceGcSchedule {
                     gcMap.put(t1[j], t2[j]);
                 }
 
+
                 ServiceGcDetailBO gcDetailBO = new ServiceGcDetailBO();
                 gcDetailBO.setServiceId(service.getServiceId());
                 gcDetailBO.setServiceName(service.getServiceName());
+                System.out.println("init bo.....");
                 gcDetailBO.initGc(gcMap);
 
-                iServiceGcDetailService.save(gcDetailBO);
+                System.out.println("gcDetailBo = " + gcDetailBO);
+
+                boolean sucess = iServiceGcDetailService.save(gcDetailBO);
+
+                System.out.println("save status = " + sucess);
             }
 
         }
