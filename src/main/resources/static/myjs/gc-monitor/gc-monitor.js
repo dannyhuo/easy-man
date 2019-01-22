@@ -232,7 +232,7 @@ function initEcharts2() {
                 const div = document.createElement("DIV");
                 div.id = "div_" + id;
                 div.className = "row";
-                div.style.height="1000px";
+                div.style.height="450px";
                 div.style.width="100%";
                 chartParent.appendChild(div);
                 div.innerHTML = "";
