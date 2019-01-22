@@ -65,7 +65,7 @@ public class ShellUtil {
         return result;
     }
 
-    private static String remoteShellPath = "classpath:os/remote-shell.sh";
+    private static String remoteShellPath = "sh /Users/danny/works/idea/easy-man/src/main/bin/os/remote-shell.sh";
     private final static String BLANK = " ";
     public static List<String> exec(String command, String host, String user){
         List<String> result = null;

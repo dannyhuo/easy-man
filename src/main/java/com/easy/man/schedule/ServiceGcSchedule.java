@@ -9,6 +9,8 @@ import com.easy.man.service.INodeMemoryService;
 import com.easy.man.service.IServiceGcDetailService;
 import com.easy.man.service.IServicesService;
 import com.easy.man.sh.ShellUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -28,7 +30,9 @@ public class ServiceGcSchedule {
 
     private static int memSize = 3;
 
-    private static String JSTAT = "classpath:jvm/jstat-gc.sh";
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    private static String JSTAT = "sh /Users/danny/works/idea/easy-man/src/main/bin/jvm/jstat-gc.sh";
     private static String BLANK = " ";
 
     @Autowired
@@ -40,10 +44,11 @@ public class ServiceGcSchedule {
 
     @Scheduled(cron = "0 */1 * * * *")
     public void serviceGcSampling () {
-
+        logger.info("invoke serviceGcSampling ...");
         List<ServiceVO> services = iServicesService.listServiceByPage(1, 1000);
-        int size = 0;
+        int size;
         if (null == services || (size = services.size()) == 0) {
+            logger.info("No service.......");
             return;
         }
 
@@ -59,7 +64,8 @@ public class ServiceGcSchedule {
             cmdBuffer.append(service.getServiceName());
             cmdBuffer.append(BLANK);
             List<String> rs = ShellUtil.exec(cmdBuffer.toString());
-            System.out.println(cmdBuffer);
+            logger.info(cmdBuffer.toString() + ", line count is " + rs.size());
+
             if (null != rs && rs.size() == 2) {
                 String[] t1 = ShellUtil.pickArray(rs.get(0));
                 String[] t2 = ShellUtil.pickArray(rs.get(1));
@@ -73,14 +79,19 @@ public class ServiceGcSchedule {
                 ServiceGcDetailBO gcDetailBO = new ServiceGcDetailBO();
                 gcDetailBO.setServiceId(service.getServiceId());
                 gcDetailBO.setServiceName(service.getServiceName());
-                System.out.println("init bo.....");
+                logger.info("init bo.....");
                 gcDetailBO.initGc(gcMap);
 
-                System.out.println("gcDetailBo = " + gcDetailBO);
+                logger.info("gcDetailBo = " + gcDetailBO);
 
                 boolean sucess = iServiceGcDetailService.save(gcDetailBO);
 
-                System.out.println("save status = " + sucess);
+                logger.info("save status = " + sucess);
+            } else {
+                for (int j = 0; j < rs.size(); j++) {
+                    logger.error(rs.get(j));
+                }
+
             }
 
         }

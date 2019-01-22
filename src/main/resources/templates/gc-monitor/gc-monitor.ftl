@@ -47,7 +47,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Service Lists</h3>
+                        <h3 class="mb-0">Gc Monitor</h3>
                     </div>
 
                     <!-- content -->
@@ -64,6 +64,8 @@
     </div>
 </div>
 <#include "../template/scripts.ftl" />
+
+<script type="application/javascript" src="../static/assets/vendor/echarts.js.dist/echarts.min.js"></script>
 
 <script type="application/javascript" src="../static/myjs/gc-monitor/gc-monitor.js"></script>
 </body>
