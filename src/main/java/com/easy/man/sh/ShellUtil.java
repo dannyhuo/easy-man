@@ -1,5 +1,8 @@
 package com.easy.man.sh;
 
+import com.easy.man.config.CustomerConfig;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -65,7 +68,9 @@ public class ShellUtil {
         return result;
     }
 
-    private static String remoteShellPath = "sh /Users/danny/works/idea/easy-man/src/main/bin/os/remote-shell.sh";
+    @Value("${easy.man.bin}")
+    private static String bin = "/home/az-user/work/monitor/easy-man-0.0.1-SNAPSHOT/bin";
+    private static String remoteShellPath =  "sh " + bin + "os/remote-shell.sh";
     private final static String BLANK = " ";
     public static List<String> exec(String command, String host, String user){
         List<String> result = null;

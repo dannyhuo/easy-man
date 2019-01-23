@@ -12,6 +12,7 @@ import com.easy.man.sh.ShellUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -32,14 +33,24 @@ public class ServiceGcSchedule {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static String JSTAT = "sh /Users/danny/works/idea/easy-man/src/main/bin/jvm/jstat-gc.sh";
+
+    private static String JSTAT = "jvm/jstat-gc.sh";
     private static String BLANK = " ";
+    private String classPath = "";
+
+    @Value("${easy.man.bin}")
+    private static String bin = "/home/az-user/work/monitor/easy-man-0.0.1-SNAPSHOT/bin/";
 
     @Autowired
     private IServiceGcDetailService iServiceGcDetailService;
 
     @Autowired
     private IServicesService iServicesService;
+
+    public ServiceGcSchedule () {
+        super();
+        classPath = this.getClass().getClassLoader().getResource("").getPath();
+    }
 
 
     @Scheduled(cron = "0 */1 * * * *")
@@ -55,6 +66,8 @@ public class ServiceGcSchedule {
         for (int i = 0; i < size; i++) {
             ServiceVO service = services.get(i);
             StringBuffer cmdBuffer = new StringBuffer();
+            cmdBuffer.append("sh ");
+            cmdBuffer.append(bin);
             cmdBuffer.append(JSTAT);
             cmdBuffer.append(BLANK);
             cmdBuffer.append(service.getNode().getHostName());
