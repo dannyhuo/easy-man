@@ -108,14 +108,17 @@
           service_gc_detail g
         on
           s.service_id = g.service_id
-        <!--<where>-->
-            <!--<if test="startTime != null">-->
-                <!--and g.create_time &gt;= #{startTime}-->
-            <!--</if>-->
-            <!--<if test="endTime != null">-->
-                <!--and g.create_time &lt; #{endTime}-->
-            <!--</if>-->
-        <!--</where>-->
+        <where>
+            <if test="nodeId != null">
+                and s.node_id = ${nodeId}
+            </if>
+            <if test="startTime != null">
+                and g.create_time &gt;= #{startTime}
+            </if>
+            <if test="endTime != null">
+                and g.create_time &lt; #{endTime}
+            </if>
+        </where>
 
         <if test="startRow != null and pageSize != null">
             limit ${startRow}, ${pageSize}

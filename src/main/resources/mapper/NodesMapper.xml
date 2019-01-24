@@ -48,14 +48,17 @@
           node_memory m
         on
           n.node_id = m.node_id
-        <!--<where>-->
-        <!--<if test="startTime != null">-->
-        <!--and g.create_time &gt;= #{startTime}-->
-        <!--</if>-->
-        <!--<if test="endTime != null">-->
-        <!--and g.create_time &lt; #{endTime}-->
-        <!--</if>-->
-        <!--</where>-->
+        <where>
+            <if test="nodeId != null">
+                and n.node_id = ${nodeId}
+            </if>
+            <if test="startTime != null">
+              and m.create_time &gt;= #{startTime}
+            </if>
+            <if test="endTime != null">
+              and m.create_time &lt; #{endTime}
+            </if>
+        </where>
 
         <if test="startRow != null and pageSize != null">
             limit ${startRow}, ${pageSize}

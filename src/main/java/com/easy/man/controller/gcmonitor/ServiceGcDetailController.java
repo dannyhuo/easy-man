@@ -34,7 +34,8 @@ public class ServiceGcDetailController {
 
     @RequestMapping(value = "/monitor/loadData")
     public List<ServiceVO> loadData(ModelAndView mav){
-        return iServicesService.listServiceAndGcByPage(30);
+        //默认展示最近三天
+        return iServicesService.listServiceAndGcByPage(3);
     }
 
 }

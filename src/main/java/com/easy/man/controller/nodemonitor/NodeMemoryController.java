@@ -38,8 +38,8 @@ public class NodeMemoryController {
 
     @RequestMapping(value = "/monitor/loadData")
     public List<NodesVO> loadData(){
-        return iNodesService.listNodeAndMemoryByPage(1, 1000);
+        //默认展示最近三天
+        return iNodesService.listNodeAndMemoryByPage(3);
     }
-
 
 }

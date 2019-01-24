@@ -43,8 +43,7 @@ public class ServicesServiceImpl extends ServiceImpl<ServicesMapper, Services> i
     public List<ServiceVO> listServiceAndGcByPage(int lastDays) {
         long currentMs = System.currentTimeMillis();
         Map<String, Object> paramMap = new HashMap<>(2);
-        paramMap.put("startTime", new Date(currentMs));
-        paramMap.put("endTime", new Date(currentMs - (DAY_MS * lastDays)));
+        paramMap.put("startTime", new Date(currentMs - (DAY_MS * lastDays)));
         return servicesMapper.listServiceAndGcByPage(paramMap);
     }
 }

@@ -32,4 +32,10 @@ public interface INodesService extends IService<Nodes> {
      */
     List<NodesVO> listNodeAndMemoryByPage(int pageNo, int pageSize);
 
+    /**
+     * 查询最近n天内服务和gc关联相关信息
+     * @param lastDays 最近多少天
+     * @return
+     */
+    List<NodesVO> listNodeAndMemoryByPage(int lastDays);
 }
