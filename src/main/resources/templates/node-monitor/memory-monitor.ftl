@@ -21,7 +21,7 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Gc Monitor</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Memory Monitor</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
@@ -57,7 +57,7 @@
 
 <script type="application/javascript" src="../static/assets/vendor/echarts.js.dist/echarts.min.js"></script>
 
-<script type="application/javascript" src="../static/myjs/gc-monitor/gc-monitor.js"></script>
+<script type="application/javascript" src="../static/myjs/node-monitor/memory-monitor.js"></script>
 </body>
 
 </html>

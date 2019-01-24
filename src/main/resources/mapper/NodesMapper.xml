@@ -2,4 +2,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.easy.man.mapper.NodesMapper">
 
+    <resultMap id="nodeBaseMap" type="com.easy.man.entity.po.Nodes">
+        <id property="nodeId" column="node_id" />
+        <result property="nodeName" column="node_name" />
+        <result property="hostName" column="host_name" />
+        <result property="userName" column="user_name" />
+        <result property="ip" column="ip" />
+        <result property="ipPublic" column="ip_public" />
+    </resultMap>
+
+
+    <resultMap id="nodeMemoryBaseMap" type="com.easy.man.entity.po.NodeMemory">
+        <id property="nodeMemoryId" column="node_memory_id" />
+        <result property="total" column="total" />
+        <result property="used" column="used" />
+        <result property="free" column="free" />
+        <result property="shared" column="shared" />
+        <result property="buffCache" column="buff_cache" />
+        <result property="available" column="available" />
+        <result property="swapTotal" column="swap_total" />
+        <result property="swapUsed" column="swap_used" />
+        <result property="swapFree" column="swap_free" />
+        <result property="createTime" column="create_time" />
+    </resultMap>
+
+
+    <!-- node 关联内存查询结果集 -->
+    <resultMap id="nodeWithMemoryMap" type="com.easy.man.entity.vo.NodesVO" extends="nodeBaseMap">
+        <association property="nodeMemories" resultMap="nodeMemoryBaseMap" />
+    </resultMap>
+
+
+    <select id="listNodeAndMemoryByPage" resultMap="nodeWithMemoryMap" parameterType="java.util.HashMap">
+        select
+          n.node_id,
+          n.node_name,
+          n.host_name,
+          n.user_name,
+          n.ip,
+          n.ip_public,
+          m.*
+        from
+          nodes n
+        left join
+          node_memory m
+        on
+          n.node_id = m.node_id
+        <!--<where>-->
+        <!--<if test="startTime != null">-->
+        <!--and g.create_time &gt;= #{startTime}-->
+        <!--</if>-->
+        <!--<if test="endTime != null">-->
+        <!--and g.create_time &lt; #{endTime}-->
+        <!--</if>-->
+        <!--</where>-->
+
+        <if test="startRow != null and pageSize != null">
+            limit ${startRow}, ${pageSize}
+        </if>
+    </select>
+
+
+
+
 </mapper>
