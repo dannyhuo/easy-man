@@ -35,6 +35,8 @@ const GC_INFO = [
 
 const borderWidth = 1;
 
+const smooth = true;
+
 
 /**
  * 向container中追加card
@@ -153,6 +155,7 @@ function loadEcharts() {
                             type:'line',
                             symbolSize: 8,
                             hoverAnimation: false,
+                            smooth : smooth,
                             data : curData
                         });
                     }

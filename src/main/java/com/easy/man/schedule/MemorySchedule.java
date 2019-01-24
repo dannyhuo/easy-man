@@ -27,17 +27,17 @@ public class MemorySchedule {
     @Scheduled(cron = "0 */1 * * * *")
     public void memorySampling () {
 
-//        List<String> rs = ShellUtil.exec("free", "cdp", "az-user");
-//
-//        NodeMemoryBO nodeMemory = new NodeMemoryBO();
-//
-//        nodeMemory.setNodeId(10000);
-//
-//        nodeMemory.addMem(ShellUtil.pickArray(rs.get(1)));
-//
-//        nodeMemory.addSwapMem(ShellUtil.pickArray(rs.get(2)));
-//
-//        iNodeMemoryService.save(nodeMemory);
+        List<String> rs = ShellUtil.exec("free", "cdp", "az-user");
+
+        NodeMemoryBO nodeMemory = new NodeMemoryBO();
+
+        nodeMemory.setNodeId(10000);
+
+        nodeMemory.addMem(ShellUtil.pickArray(rs.get(1)));
+
+        nodeMemory.addSwapMem(ShellUtil.pickArray(rs.get(2)));
+
+        iNodeMemoryService.save(nodeMemory);
 
     }
 

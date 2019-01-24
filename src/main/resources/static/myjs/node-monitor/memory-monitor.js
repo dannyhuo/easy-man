@@ -23,6 +23,7 @@ const INFO = [
     }
 ];
 
+const smooth = true;
 
 const borderWidth = 1;
 
@@ -113,6 +114,7 @@ function loadEcharts() {
                             type:'line',
                             symbolSize: 8,
                             hoverAnimation: false,
+                            smooth : smooth,
                             data : curData
                         });
                     }

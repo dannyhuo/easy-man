@@ -69,7 +69,7 @@ public class ShellUtil {
     }
 
     @Value("${easy.man.bin}")
-    private static String bin = "/home/az-user/work/monitor/easy-man-0.0.1-SNAPSHOT/bin";
+    private static String bin = "/home/az-user/work/monitor/easy-man-0.0.1-SNAPSHOT/bin/";
     private static String remoteShellPath =  "sh " + bin + "os/remote-shell.sh";
     private final static String BLANK = " ";
     public static List<String> exec(String command, String host, String user){
