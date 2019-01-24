@@ -76,7 +76,7 @@
                                     <a href="#!" class="nav-link">Cpu monitor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#!" class="nav-link">Memory monitor</a>
+                                    <a href="/node-memory/monitor" class="nav-link">Memory monitor</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#!" class="nav-link">Process monitor</a>
@@ -171,7 +171,7 @@
                         <div class="collapse" id="navbar-service-manager">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="#!" class="nav-link">Service manage</a>
+                                    <a href="/service/list" class="nav-link">Service manage</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#!" class="nav-link">Log view</a>
@@ -184,12 +184,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">
+                        <a class="nav-link" href="/gc/monitor">
                             <i class="ni ni-spaceship text-red"></i>
                             <span class="nav-link-text">Gc Monitor</span>
                         </a>
                     </li>
-
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
